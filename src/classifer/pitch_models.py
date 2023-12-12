@@ -1,6 +1,5 @@
 import numpy as np
 
-
 class PitchClassifier:
     def __init__(self, alpha=1):
         self.alpha = alpha
@@ -10,19 +9,16 @@ class PitchClassifier:
         self.pitch_type_prior_probs = {}
 
     @staticmethod
-    def _tokenize(self, pitch_data):
+    def _tokenize(pitch_data):
         # Use all features as tokens
         keys = list(pitch_data.keys())
-        print(keys)
         return keys
-
-
 
     def fit(self, X, y):
         self.pitch_types = np.unique(y)
 
         for pitch_type in self.pitch_types:
-            X_pitch_type = [X[i] for i in range(len(X)) if y[i] == pitch_type]
+            X_pitch_type = [pitch_data for pitch_data, label in zip(X, y) if label == pitch_type]
 
             feature_counts = {}
             total_features = 0
@@ -57,3 +53,4 @@ class PitchClassifier:
             predictions.append(predicted_pitch_type)
 
         return predictions
+
