@@ -9,10 +9,14 @@ class PitchClassifier:
         self.total_pitch_types = {}
         self.pitch_type_prior_probs = {}
 
+    @staticmethod
     def _tokenize(self, pitch_data):
-        # Simple tokenizer, you may want to improve this based on your specific use case
-        # For simplicity, we'll use all the features as tokens
-        return list(pitch_data.keys())
+        # Use all features as tokens
+        keys = list(pitch_data.keys())
+        print(keys)
+        return keys
+
+
 
     def fit(self, X, y):
         self.pitch_types = np.unique(y)
@@ -34,14 +38,15 @@ class PitchClassifier:
 
     def _calculate_likelihood(self, feature, pitch_type):
         return (self.pitch_type_counts[pitch_type].get(feature, 0) + self.alpha) / \
-               (self.total_pitch_types[pitch_type] + self.alpha * len(self.pitch_type_counts[pitch_type]))
+            (self.total_pitch_types[pitch_type] + self.alpha * len(self.pitch_type_counts[pitch_type]))
 
     def predict(self, X):
         predictions = []
 
         for pitch_data in X:
             tokens = self._tokenize(pitch_data)
-            posterior_probs = {pitch_type: np.log(self.pitch_type_prior_probs[pitch_type]) for pitch_type in self.pitch_types}
+            posterior_probs = {pitch_type: np.log(self.pitch_type_prior_probs[pitch_type]) for pitch_type in
+                               self.pitch_types}
 
             for feature in tokens:
                 for pitch_type in self.pitch_types:
