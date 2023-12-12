@@ -14,10 +14,10 @@ def display_results(pitch_type):
 # Main runner
 if __name__ == "__main__":
     # User input for the desired pitch type
-    user_pitch_input = input("Enter the pitch type (4-Seamer, Cutter, Sinker, Slider, Curveball, Changeup): ")
+    user_pitch_input = input("Enter the pitch type (Fastball, Cutter, Sinker, Slider, Curveball, ChangeUp): ")
 
     # Validate user input
-    valid_pitch_types = ['4-Seamer', 'Cutter', 'Sinker', 'Slider', 'Curveball', 'Changeup']
+    valid_pitch_types = ['Fastball', 'Cutter', 'Sinker', 'Slider', 'Curveball', 'ChangeUp']
     if user_pitch_input not in valid_pitch_types:
         print("Invalid pitch type. Please enter a valid pitch type.")
     else:
