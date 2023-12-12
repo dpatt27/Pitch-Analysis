@@ -4,22 +4,20 @@ from src.analysis.pitch_analysis import *
 
 class TestPitchAnalysis(unittest.TestCase):
     def setUp(self):
-        # Create an instance of PitchAnalysis for testing
+        # Load in Test Data
         self.analysis = PitchAnalysis('/Users/Test Data.xlsx')
 
     def test_group_by_teams(self):
 
         # Call the method being tested
         result = self.analysis.group_by_teams()
-
+        expected_result = ['Foresters', 'Blues', 'Saints']
         # Assert the expected result
-        self.assertCountEqual(result, ['Foresters', 'Blues', 'Saints'])
+        self.assertCountEqual(result, expected_result)
 
     def test_avg_pitch_speed(self):
-        # Call the method being tested
         result = self.analysis.avg_pitch_speed('Fastball')
 
-        # Assert the expected result
         expected_result = {'Blues': 100.0, 'Foresters': 90.0, 'Saints': 70.0}
         self.assertDictEqual(result, expected_result)
 
