@@ -10,11 +10,11 @@ def display_results(pitch_type, analysis):
 
 
 def display_top_pitches(attribute1, attribute2, pitch_type, analysis):
-    top_players_data = analysis.top_pitches(attribute1, attribute2, pitch_type)
+    top_pitches_data = analysis.top_pitches(attribute1, attribute2, pitch_type)
 
-    if top_players_data is not None:
+    if top_pitches_data is not None:
         print(f"\nPitches with the highest sum of standard deviations above the mean:")
-        print(top_players_data)
+        print(top_pitches_data)
 
 
 if __name__ == "__main__":
@@ -22,17 +22,17 @@ if __name__ == "__main__":
     analysis = PitchAnalysis(FILE_PATH)
 
     # User input for the desired pitch type
-    user_pitch_input = input("Enter the pitch type (Fastball, Cutter, Sinker, Slider, Curveball, ChangeUp): ")
+    pitch_input = input("Enter the pitch type (Fastball, Cutter, Sinker, Slider, Curveball, ChangeUp): ")
 
     # Validate user input
     valid_pitch_types = ['Fastball', 'Cutter', 'Sinker', 'Slider', 'Curveball', 'ChangeUp']
-    if user_pitch_input not in valid_pitch_types:
+    if pitch_input not in valid_pitch_types:
         print("Invalid pitch type. Please enter a valid pitch type.")
     else:
-        display_results(user_pitch_input, analysis)
+        display_results(pitch_input, analysis)
 
-    user_attribute1_input = input("Enter the first attribute (RelSpeed, SpinRate, VertBreak, HorzBreak, Extension): ")
-    user_attribute2_input = input("Enter the second attribute (RelSpeed, SpinRate, VertBreak, HorzBreak, Extension):  ")
+    attribute_input1 = input("Enter the first attribute (RelSpeed, SpinRate, VertBreak, HorzBreak, Extension): ")
+    attribute_input2 = input("Enter the second attribute (RelSpeed, SpinRate, VertBreak, HorzBreak, Extension):  ")
 
     # Calculate sum of standard deviations above the mean and display top players
-    display_top_pitches(user_attribute1_input, user_attribute2_input, user_pitch_input, analysis)
+    display_top_pitches(attribute_input1, attribute_input2, pitch_input, analysis)
