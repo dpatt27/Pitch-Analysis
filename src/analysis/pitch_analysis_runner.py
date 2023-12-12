@@ -9,11 +9,11 @@ def display_results(pitch_type, analysis):
         print(f"{team}: {speed:.2f} mph")
 
 
-def display_top_performers(attribute1, attribute2, analysis):
-    top_players_data = analysis.top_performers(attribute1, attribute2)
+def display_top_pitches(attribute1, attribute2, pitch_type, analysis):
+    top_players_data = analysis.top_pitches(attribute1, attribute2, pitch_type)
 
     if top_players_data is not None:
-        print(f"\nPlayers with the highest sum of standard deviations above the mean:")
+        print(f"\nPitches with the highest sum of standard deviations above the mean:")
         print(top_players_data)
 
 
@@ -31,8 +31,8 @@ if __name__ == "__main__":
     else:
         display_results(user_pitch_input, analysis)
 
-    user_attribute1_input = input("Enter the first attribute (RelSpeed, SpinRate, Extension, VertBreak, HorzBreak): ")
-    user_attribute2_input = input("Enter the second attribute (RelSpeed, SpinRate, Extension, VertBreak, HorzBreak): ")
+    user_attribute1_input = input("Enter the first attribute (RelSpeed, SpinRate, VertBreak, HorzBreak, Extension): ")
+    user_attribute2_input = input("Enter the second attribute (RelSpeed, SpinRate, VertBreak, HorzBreak, Extension):  ")
 
     # Calculate sum of standard deviations above the mean and display top players
-    display_top_performers(user_attribute1_input, user_attribute2_input, analysis)
+    display_top_pitches(user_attribute1_input, user_attribute2_input, user_pitch_input, analysis)
