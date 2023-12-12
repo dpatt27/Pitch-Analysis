@@ -1,7 +1,7 @@
 import numpy as np
 
 class PitchClassifier:
-    def __init__(self, alpha=1):
+    def __init__(self, alpha=2):
         self.alpha = alpha
         self.pitch_types = None
         self.pitch_type_counts = {}
@@ -31,6 +31,13 @@ class PitchClassifier:
             self.pitch_type_counts[pitch_type] = feature_counts
             self.total_pitch_types[pitch_type] = total_features
             self.pitch_type_prior_probs[pitch_type] = len(X_pitch_type) / len(X)
+
+            print(f"Pitch Type: {pitch_type}")
+            print("Feature Counts:", feature_counts)
+            print("Total Features:", total_features)
+            print("Prior Probability:", self.pitch_type_prior_probs[pitch_type])
+            print("---")
+
 
     def _calculate_likelihood(self, feature, pitch_type):
         return (self.pitch_type_counts[pitch_type].get(feature, 0) + self.alpha) / \
