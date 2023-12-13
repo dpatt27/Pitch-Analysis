@@ -12,7 +12,7 @@ def display_results(pitch_type, analysis):
 def display_top_pitches(attribute1, attribute2, pitch_type, analysis):
     top_pitches_data = analysis.top_pitches(attribute1, attribute2, pitch_type)
 
-    if top_pitches_data is not None:
+    if top_pitches_data is not None:  #test
         print(f"\nPitches with the highest sum of standard deviations above the mean:")
         print(top_pitches_data)
 
